@@ -1,14 +1,2 @@
 # This file contains recursive sources that require this package
-R-AER
-R-betareg
-R-broom
-R-caret
 R-maxLik
-R-mi
-R-modelr
-R-partykit
-R-plm
-R-recipes
-R-sem
-R-systemfit
-R-tidyverse
