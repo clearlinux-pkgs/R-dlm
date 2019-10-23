@@ -4,7 +4,7 @@
 #
 Name     : R-dlm
 Version  : 1.1.5
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/dlm_1.1-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dlm_1.1-5.tar.gz
 Summary  : Bayesian and Likelihood Analysis of Dynamic Linear Models
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-dlm-lib = %{version}-%{release}
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
 1. Put any C/C++/Fortran code in 'src'
@@ -37,13 +38,13 @@ lib components for the R-dlm package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552919963
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1571818511
 
 %install
-export SOURCE_DATE_EPOCH=1552919963
+export SOURCE_DATE_EPOCH=1571818511
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -72,12 +73,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  dlm || :
+R CMD check --no-manual --no-examples --no-codoc dlm || :
 
 
 %files
