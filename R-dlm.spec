@@ -4,7 +4,7 @@
 #
 Name     : R-dlm
 Version  : 1.1.5
-Release  : 28
+Release  : 29
 URL      : https://cran.r-project.org/src/contrib/dlm_1.1-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dlm_1.1-5.tar.gz
 Summary  : Bayesian and Likelihood Analysis of Dynamic Linear Models
@@ -12,16 +12,11 @@ Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-dlm-lib = %{version}-%{release}
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-1. Put any C/C++/Fortran code in 'src'
-2. If you have compiled code, add a .First.lib() function in 'R'
-to load the shared library
-3. Edit the help file skeletons in 'man'
-4. Run R CMD build to create the index files
-5. Run R CMD check to check the package
-6. Run R CMD build to make the package file
+Kalman filtering and smoothing, and Bayesian
+    analysis of Normal linear State Space models, also known as 
+    Dynamic Linear Models.
 
 %package lib
 Summary: lib components for the R-dlm package.
@@ -33,21 +28,22 @@ lib components for the R-dlm package.
 
 %prep
 %setup -q -c -n dlm
+cd %{_builddir}/dlm
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571818511
+export SOURCE_DATE_EPOCH=1589519819
 
 %install
-export SOURCE_DATE_EPOCH=1571818511
+export SOURCE_DATE_EPOCH=1589519819
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
