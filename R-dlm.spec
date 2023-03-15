@@ -4,7 +4,7 @@
 #
 Name     : R-dlm
 Version  : 1.1.6
-Release  : 48
+Release  : 49
 URL      : https://cran.r-project.org/src/contrib/dlm_1.1-6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dlm_1.1-6.tar.gz
 Summary  : Bayesian and Likelihood Analysis of Dynamic Linear Models
